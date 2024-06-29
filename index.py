@@ -6,12 +6,14 @@
 import requests  # Esta biblioteca nos ayuda a pedir cosas de internet
 import uuid  # Esta biblioteca nos ayuda a crear un número único y aleatorio
 import json  # Esta biblioteca nos ayuda a trabajar con datos en formato JSON (como un lenguaje que entienden las computadoras)
-import os  # Esta biblioteca nos ayuda a usar cosas del sistema, como las variables de entorno
+import dotenv  # Esta biblioteca nos ayuda a usar cosas del sistema, como las variables de entorno
+
+config = dotenv.dotenv_values(".env")
 
 # Guardar nuestras claves y endpoint del traductor (como nuestras contraseñas secretas)
-key = os.environ['TRANSLATOR_TEXT_SUBSCRIPTION_KEY']  # Nuestra clave secreta para usar el traductor
-endpoint = os.environ['TRANSLATOR_TEXT_ENDPOINT']  # El lugar en internet donde está el traductor
-location = os.environ['TRANSLATOR_TEXT_LOCATION']  # La región donde está nuestro traductor
+key = config.get('TRANSLATOR_TEXT_SUBSCRIPTION_KEY')  # Nuestra clave secreta para usar el traductor
+endpoint = config.get('TRANSLATOR_TEXT_ENDPOINT')  # El lugar en internet donde está el traductor
+location = config.get('TRANSLATOR_TEXT_LOCATION')  # La región donde está nuestro traductor
 
 # Definir el camino donde pedimos la traducción
 path = '/translate'  # El camino que sigue nuestra solicitud
